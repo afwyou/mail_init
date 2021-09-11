@@ -3,6 +3,7 @@ var router = express.Router();
 var nodemailer = require('nodemailer')
 var csrf = require('csurf')
 var csrfProtection = csrf({ cookie: true })//我要使用她的功能
+require('dotenv').config()
 router.get('/', csrfProtection, function (req, res) {
     //console.log(req.csrfToken())
     res.render('contact', { csrfToken: req.csrfToken() });//把參數帶入
@@ -14,8 +15,8 @@ router.post('/post', csrfProtection, function (req, res) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'hexschooltest6@gmail.com',
-            pass: 'edith1004'
+            user: process.env.gmailUser,
+            pass: process.env.gmailPass
         }
     })
     var mailOptions = {
