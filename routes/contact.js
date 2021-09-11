@@ -11,13 +11,13 @@ router.post('/post', function (req, res) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'hexschool@gmail.com',
+            user: 'hexschooltest6@gmail.com',
             pass: 'edith1004'
         }
     })
     var mailOptions = {
         from: '"六角學院"<service@hexschool.com>',
-        to: 'hexschoolnode@gmail.com',
+        to: 'hexschooltest6@gmail.com',
         subject: req.body.username + '記了一封信',
         text: req.body.description
     }
